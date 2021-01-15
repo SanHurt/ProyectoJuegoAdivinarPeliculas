@@ -106,7 +106,7 @@
             </TabItem>
             <TabItem Header="Gestionar películas">
                 <ListBox x:Name="listBox"
-                         ItemsSource="{Binding Path=Imagen}"
+                         ItemsSource="{Binding}"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     
                 </ListBox>
