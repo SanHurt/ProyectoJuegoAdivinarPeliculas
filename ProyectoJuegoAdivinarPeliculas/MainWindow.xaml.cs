@@ -8,7 +8,7 @@ namespace ProyectoJuegoAdivinarPeliculas
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<CartelPelicula> listaPeliculas;
+        ObservableCollection<CartelPelicula> listaPeliculas ;
         private int numActualCartel = 1;
         public enum CambiarCartel
         {
