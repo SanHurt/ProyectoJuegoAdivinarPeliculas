@@ -1,0 +1,116 @@
+﻿<Window x:Class="ProyectoJuegoAdivinarPeliculas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoJuegoAdivinarPeliculas"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="850">
+    <DockPanel>
+        <TabControl>
+            <TabItem Header="Jugar">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="500"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel LastChildFill="True" x:Name="dockPanelPelicula">
+                        <TextBlock DockPanel.Dock="Top"
+                                   Text="Cartel película"></TextBlock>
+                        <StackPanel DockPanel.Dock="Bottom"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <Image Source="Assets/arrow.png"
+                                   Width="20"
+                                   MouseLeftButtonDown="Anterior_MouseLeftButtonDown"></Image>
+                            <TextBlock x:Name="numeroCartel"></TextBlock>
+                            <Image Source="Assets/arrow.png"
+                                   Width="20"
+                                   FlowDirection="RightToLeft"
+                                   MouseLeftButtonDown="Siguiente_MouseLeftButtonDown"></Image>
+                        </StackPanel>
+                        <Image Source="{Binding Path= Imagen}"
+                               Margin="5"
+                               Stretch="Fill"
+                               MouseLeftButtonDown="Anterior_MouseLeftButtonDown"/>
+                    </DockPanel>
+                    <DockPanel x:Name="dockPanel"
+                        Grid.Column="1" LastChildFill="False">
+                        <StackPanel DockPanel.Dock="Top"
+                                    Margin="30">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="100"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock>Puntuación total</TextBlock>
+                                <TextBox Grid.Row="1"></TextBox>
+                                <Button Grid.Column="1"
+                                        Grid.Row="1"
+                                    Content="Nueva partida"
+                                        Height="20"
+                                        Margin="10"
+                                        VerticalAlignment="Top"></Button>
+                            </Grid>
+
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Top"
+                                    Margin="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock>Título de la película</TextBlock>
+                                <TextBox Grid.Row="1"
+                                         x:Name="textBoxAdivinarPelicula"></TextBox>
+                                <Button Grid.Column="1"
+                                        Grid.Row="1"
+                                        x:Name="buttonValidar"
+                                Content="Validar"
+                                        Width="100"
+                                        Click="buttonValidar_Click"></Button>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Margin="20"
+                                    DockPanel.Dock="Top">
+                            <CheckBox Content="Ver pista"
+                                      x:Name="checkBoxVerPista"
+                                      Checked="checkBoxVerPista_Checked"
+                                      Unchecked="checkBoxVerPista_Unchecked"></CheckBox>
+                            <TextBlock x:Name="textBlockPista"
+                                       Text="{Binding Path=Pista}"></TextBlock>
+                        </StackPanel>
+
+
+
+                        <StackPanel x:Name="stackPanelGenero" 
+                            DockPanel.Dock="Bottom">
+                            <Image Source="Assets/genero.png"
+                                   Width="80"></Image>
+                            <TextBlock x:Name="genero"
+                                       HorizontalAlignment="Center"
+                                       Text="{Binding Path= Genero}"></TextBlock>
+                            <TextBlock Margin="10"></TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Gestionar películas">
+                <ListBox x:Name="listBox"
+                         ItemsSource="{Binding Path=Imagen}"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    
+                </ListBox>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
